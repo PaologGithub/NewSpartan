@@ -5,6 +5,10 @@ VisualStudioVersion = 17.14.37111.16 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewSpartan.App", "NewSpartan.App\NewSpartan.App.csproj", "{74AEE235-12EC-4011-A6A0-A01B42BFD4D8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Renderers", "Renderers", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewSpartan.EdgeWebviewRenderer", "NewSpartan.EdgeWebviewRenderer\NewSpartan.EdgeWebviewRenderer.csproj", "{BEC84191-CCA4-4B53-803B-A5E7914E3127}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|arm64 = Debug|arm64
@@ -33,9 +37,24 @@ Global
 		{74AEE235-12EC-4011-A6A0-A01B42BFD4D8}.Release|x86.ActiveCfg = Release|x86
 		{74AEE235-12EC-4011-A6A0-A01B42BFD4D8}.Release|x86.Build.0 = Release|x86
 		{74AEE235-12EC-4011-A6A0-A01B42BFD4D8}.Release|x86.Deploy.0 = Release|x86
+		{BEC84191-CCA4-4B53-803B-A5E7914E3127}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{BEC84191-CCA4-4B53-803B-A5E7914E3127}.Debug|arm64.Build.0 = Debug|Any CPU
+		{BEC84191-CCA4-4B53-803B-A5E7914E3127}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BEC84191-CCA4-4B53-803B-A5E7914E3127}.Debug|x64.Build.0 = Debug|Any CPU
+		{BEC84191-CCA4-4B53-803B-A5E7914E3127}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BEC84191-CCA4-4B53-803B-A5E7914E3127}.Debug|x86.Build.0 = Debug|Any CPU
+		{BEC84191-CCA4-4B53-803B-A5E7914E3127}.Release|arm64.ActiveCfg = Release|Any CPU
+		{BEC84191-CCA4-4B53-803B-A5E7914E3127}.Release|arm64.Build.0 = Release|Any CPU
+		{BEC84191-CCA4-4B53-803B-A5E7914E3127}.Release|x64.ActiveCfg = Release|Any CPU
+		{BEC84191-CCA4-4B53-803B-A5E7914E3127}.Release|x64.Build.0 = Release|Any CPU
+		{BEC84191-CCA4-4B53-803B-A5E7914E3127}.Release|x86.ActiveCfg = Release|Any CPU
+		{BEC84191-CCA4-4B53-803B-A5E7914E3127}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BEC84191-CCA4-4B53-803B-A5E7914E3127} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DCD1F9EF-F410-4BC0-82D8-DD1CCECF6C8B}
