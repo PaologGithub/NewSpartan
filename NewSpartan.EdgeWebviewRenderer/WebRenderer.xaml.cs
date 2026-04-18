@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.UI.Xaml.Controls;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +23,13 @@ namespace NewSpartan.EdgeWebviewRenderer
     /// </summary>
     public sealed partial class WebRenderer : Page
     {
+        public WebView2 EdgeRenderer;
+
         public WebRenderer()
         {
             this.InitializeComponent();
+
+            EdgeRenderer = EdgeWebView;
         }
     }
 }

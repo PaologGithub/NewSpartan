@@ -10,6 +10,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <edge:WebView2 x:Name="EdgeWebView" Source="https://www.google.com" />
+        <edge:WebView2 x:Name="EdgeWebView" />
     </Grid>
 </Page>

@@ -8,10 +8,4 @@
     <IsAotCompatible>true</IsAotCompatible>
     <DisableRuntimeMarshalling>true</DisableRuntimeMarshalling>
   </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.UI.Xaml" Version="2.8.7" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\NewSpartan.Core\NewSpartan.Core.csproj" />
-  </ItemGroup>
 </Project>

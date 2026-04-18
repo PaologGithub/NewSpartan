@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using NewSpartan.Core;
+using Windows.UI.Xaml.Controls;
 
 namespace NewSpartan.App
 {
@@ -7,9 +8,20 @@ namespace NewSpartan.App
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private WebviewRenderer CurrentWebviewRenderer;
+
         public MainPage()
         {
             InitializeComponent();
+
+            CurrentWebviewRenderer = new EdgeWebviewRenderer.EdgeWebviewRendererImpl(WebRenderer);
+            
+            Initialize();
+        }
+
+        public void Initialize()
+        {
+            CurrentWebviewRenderer.Initialize();
         }
     }
 }

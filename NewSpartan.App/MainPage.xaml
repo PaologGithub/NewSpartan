@@ -10,6 +10,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <renderer:WebRenderer />
+        <renderer:WebRenderer x:Name="WebRenderer" />
     </Grid>
 </Page>

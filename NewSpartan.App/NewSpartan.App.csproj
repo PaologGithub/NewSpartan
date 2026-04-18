@@ -14,6 +14,7 @@
     <EnableMsixTooling>true</EnableMsixTooling>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NewSpartan.Core\NewSpartan.Core.csproj" />
     <ProjectReference Include="..\NewSpartan.EdgeWebviewRenderer\NewSpartan.EdgeWebviewRenderer.csproj" />
   </ItemGroup>
 </Project>

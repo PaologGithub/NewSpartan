@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Renderers", "Renderers", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewSpartan.EdgeWebviewRenderer", "NewSpartan.EdgeWebviewRenderer\NewSpartan.EdgeWebviewRenderer.csproj", "{BEC84191-CCA4-4B53-803B-A5E7914E3127}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewSpartan.Core", "NewSpartan.Core\NewSpartan.Core.csproj", "{011D9F6B-6781-4677-A046-5E33416F6AB5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|arm64 = Debug|arm64
@@ -49,6 +51,18 @@ Global
 		{BEC84191-CCA4-4B53-803B-A5E7914E3127}.Release|x64.Build.0 = Release|Any CPU
 		{BEC84191-CCA4-4B53-803B-A5E7914E3127}.Release|x86.ActiveCfg = Release|Any CPU
 		{BEC84191-CCA4-4B53-803B-A5E7914E3127}.Release|x86.Build.0 = Release|Any CPU
+		{011D9F6B-6781-4677-A046-5E33416F6AB5}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{011D9F6B-6781-4677-A046-5E33416F6AB5}.Debug|arm64.Build.0 = Debug|Any CPU
+		{011D9F6B-6781-4677-A046-5E33416F6AB5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{011D9F6B-6781-4677-A046-5E33416F6AB5}.Debug|x64.Build.0 = Debug|Any CPU
+		{011D9F6B-6781-4677-A046-5E33416F6AB5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{011D9F6B-6781-4677-A046-5E33416F6AB5}.Debug|x86.Build.0 = Debug|Any CPU
+		{011D9F6B-6781-4677-A046-5E33416F6AB5}.Release|arm64.ActiveCfg = Release|Any CPU
+		{011D9F6B-6781-4677-A046-5E33416F6AB5}.Release|arm64.Build.0 = Release|Any CPU
+		{011D9F6B-6781-4677-A046-5E33416F6AB5}.Release|x64.ActiveCfg = Release|Any CPU
+		{011D9F6B-6781-4677-A046-5E33416F6AB5}.Release|x64.Build.0 = Release|Any CPU
+		{011D9F6B-6781-4677-A046-5E33416F6AB5}.Release|x86.ActiveCfg = Release|Any CPU
+		{011D9F6B-6781-4677-A046-5E33416F6AB5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
