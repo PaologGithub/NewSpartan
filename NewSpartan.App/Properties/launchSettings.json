@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "NewSpartan.App": {
+      "commandName": "MsixPackage"
+    }
+  }
+}
