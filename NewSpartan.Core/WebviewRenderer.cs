@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using System;
+using Windows.UI.Xaml.Controls;
 
 namespace NewSpartan.Core
 {
@@ -11,24 +12,51 @@ namespace NewSpartan.Core
 
         public abstract void Update();
 
-        public abstract class WebPage
-        {
-            public abstract string GetTitle { get; }
+        public abstract WebPage GetWebPage();
 
-            public abstract string GetIcon { get; }
+        public abstract Navigation GetNavigation();
+    }
+
+    public abstract class WebPage
+    {
+        public abstract string GetTitle();
+
+        public abstract string GetIcon();
+    }
+
+    public abstract class Navigation
+    {
+        public abstract void SetUrl(Uri url);
+
+        public abstract void GoBack();
+
+        public abstract void GoForward();
+
+        public abstract void Reload();
+
+        public abstract bool CanGoBack { get; }
+
+        public abstract bool CanGoForward { get; }
+
+
+        public event EventHandler<Uri> URLChanged;
+
+        protected void OnUrlChanged(Uri uri)
+        {
+            URLChanged?.Invoke(this, uri);
         }
 
-        public abstract class Navigation
+        public EventHandler<bool> CanGoBackChanged;
+        public EventHandler<bool> CanGoForwardChanged;
+
+        protected void OnCanGoBackChanged(bool canGoBack)
         {
-            public abstract void SetUrl(string url);
+            CanGoBackChanged?.Invoke(this, canGoBack);
+        }
 
-            public abstract void GoBack();
-
-            public abstract void GoForward();
-
-            public abstract bool CanGoBack { get; }
-
-            public abstract bool CanGoForward { get; }
+        protected void OnCanGoForwardChanged(bool canGoForward)
+        {
+            CanGoForwardChanged?.Invoke(this, canGoForward);
         }
     }
 }

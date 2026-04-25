@@ -10,6 +10,14 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <renderer:WebRenderer x:Name="WebRenderer" />
+        <Grid.RowDefinitions>
+            <!-- ControlBar -->
+            <RowDefinition Height="40" />
+            <!-- WebRenderer -->
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <local:ControlBar Grid.Row="0" />
+        <renderer:WebRenderer Grid.Row="1" x:Name="WebRenderer" />
     </Grid>
 </Page>
