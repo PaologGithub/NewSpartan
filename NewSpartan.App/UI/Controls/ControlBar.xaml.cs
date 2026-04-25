@@ -14,12 +14,13 @@ using Windows.UI.Xaml.Input;
 
 // Pour en savoir plus sur le modèle d'élément Contrôle utilisateur, consultez la page https://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace NewSpartan.App
+namespace NewSpartan.App.UI.Controls
 {
     public sealed partial class ControlBar : UserControl
     {
         private WebviewRenderer renderer;
         private CancellationTokenSource cts;
+        private int requestId = 0;
         private static readonly HttpClient httpClient = new HttpClient();
         private ObservableCollection<string> suggestions = new ObservableCollection<string>();
 
@@ -120,20 +121,20 @@ namespace NewSpartan.App
         {
             if (args.Reason != AutoSuggestionBoxTextChangeReason.UserInput) return;
 
-            suggestions.Clear();
+            var localId = ++requestId;
 
             cts?.Cancel();
             cts = new CancellationTokenSource();
             var token = cts.Token;
 
             try { await Task.Delay(200, token); }
-            catch (TaskCanceledException) { return; }
+            catch { return; }
 
             string query = sender.Text.Trim();
             if (string.IsNullOrEmpty(query)) return;
 
             await FetchGoogleSuggestionsAsync(query);
-            if (token.IsCancellationRequested) return;
+            if (token.IsCancellationRequested || localId != requestId) return;
         }
 
         private async Task FetchGoogleSuggestionsAsync(string query)
@@ -146,12 +147,44 @@ namespace NewSpartan.App
                 using var doc = JsonDocument.Parse(json);
                 var array = doc.RootElement[1];
 
+                var newItems = new HashSet<string>();
+
                 foreach (var item in array.EnumerateArray())
-                    suggestions.Add(item.GetString() ?? "");
+                {
+                    var value = item.GetString();
+                    if (!string.IsNullOrEmpty(value))
+                        newItems.Add(value);
+                }
+
+                UpdateSuggestions(newItems);
             }
             catch
             {
             }
+        }
+
+        private void UpdateSuggestions(HashSet<string> newItems)
+        {
+            for (int i = suggestions.Count - 1; i >= 0; i--)
+            {
+                if (!newItems.Contains(suggestions[i]))
+                {
+                    suggestions.RemoveAt(i);
+                }
+            }
+
+            foreach (var item in newItems)
+            {
+                if (!suggestions.Contains(item))
+                {
+                    suggestions.Add(item);
+                }
+            }
+        }
+
+        private void SearchBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+            sender.Text = args.SelectedItem.ToString();
         }
     }
 }

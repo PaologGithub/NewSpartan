@@ -1,6 +1,8 @@
 ﻿using NewSpartan.Core;
 using System;
 using System.Collections.Generic;
+using Windows.UI.ViewManagement;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace NewSpartan.App
@@ -22,18 +24,55 @@ namespace NewSpartan.App
 
             InitializeComponent();
 
-            CurrentWebviewRenderer = new EdgeWebviewRenderer.EdgeWebviewRendererImpl(WebRenderer);
+            CurrentWebviewRenderer = new EdgeWebviewRenderer.EdgeWebviewRendererImpl(WebRendererControl);
             Initialize();
         }
 
         async void Initialize()
         {
-            WebRenderer.EdgeRenderer.CoreWebView2Initialized += (s, e) =>
+            WebRendererControl.EdgeRenderer.CoreWebView2Initialized += (s, e) =>
             {
                 CurrentWebviewRenderer.Initialize();
             };
+            CurrentWebviewRenderer.GetWebPage().FullscreenChanged += (sender, fullscreen) =>
+            {
+                ApplicationView view = ApplicationView.GetForCurrentView();
+                if (fullscreen)
+                {
+                    if (view.TryEnterFullScreenMode())
+                    {
+                        GoFullscreen();
+                    } else
+                    {
+                        ExitFullscreen();
+                    };
+                } else
+                {
+                    view.ExitFullScreenMode();
 
-             await WebRenderer.EdgeRenderer.EnsureCoreWebView2Async();
+                    ExitFullscreen();
+                }
+            };
+
+             await WebRendererControl.EdgeRenderer.EnsureCoreWebView2Async();
+        }
+
+        private void GoFullscreen()
+        {
+            TitlebarControl.Visibility = Visibility.Collapsed;
+            ControlBarControl.Visibility = Visibility.Collapsed;
+
+            TitlebarRow.Height = new GridLength(0);
+            ControlBarRow.Height = new GridLength(0);
+        }
+
+        private void ExitFullscreen()
+        {
+            TitlebarControl.Visibility = Visibility.Visible;
+            ControlBarControl.Visibility = Visibility.Visible;
+
+            TitlebarRow.Height = new GridLength(32);
+            ControlBarRow.Height = new GridLength(40);
         }
 
         public WebviewRenderer GetWebviewRenderer()

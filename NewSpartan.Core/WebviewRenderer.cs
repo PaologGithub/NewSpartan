@@ -19,13 +19,25 @@ namespace NewSpartan.Core
 
     public abstract class WebPage
     {
+        public abstract void Initialize();
+
         public abstract string GetTitle();
 
         public abstract string GetIcon();
+
+
+        public event EventHandler<bool> FullscreenChanged;
+
+        protected void OnFullscreenChanged(bool isFullscreen)
+        {
+            FullscreenChanged?.Invoke(this, isFullscreen);
+        }
     }
 
     public abstract class Navigation
     {
+        public abstract void Initialize();
+
         public abstract void SetUrl(Uri url);
 
         public abstract void GoBack();

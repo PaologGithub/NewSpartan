@@ -25,6 +25,9 @@ namespace NewSpartan.EdgeWebviewRenderer
         public override void Initialize()
         {
             renderer.EdgeRenderer.CoreWebView2.Navigate("https://www.google.com");
+
+            webPage.Initialize();
+            navigation.Initialize();
         }
 
         public override void Update()
@@ -52,6 +55,14 @@ namespace NewSpartan.EdgeWebviewRenderer
             renderer = page;
         }
 
+        public override void Initialize()
+        {
+            renderer.EdgeRenderer.CoreWebView2.ContainsFullScreenElementChanged += (s, e) =>
+            {
+                OnFullscreenChanged(s.ContainsFullScreenElement);
+            };
+        }
+
         public override string GetTitle()
         {
             return renderer.EdgeRenderer.CoreWebView2.DocumentTitle;
@@ -72,7 +83,10 @@ namespace NewSpartan.EdgeWebviewRenderer
         public EdgeNavigationImpl(WebRenderer page)
         {
             renderer = page;
+        }
 
+        public override void Initialize()
+        {
             renderer.EdgeRenderer.NavigationCompleted += (s, e) =>
             {
                 OnUrlChanged(renderer.EdgeRenderer.Source);
@@ -88,7 +102,7 @@ namespace NewSpartan.EdgeWebviewRenderer
                     OnCanGoForwardChanged(oldCanGoForward);
                 }
             };
-        } 
+        }
 
         public override bool CanGoBack => renderer.EdgeRenderer.CanGoBack;
         public override bool CanGoForward => renderer.EdgeRenderer.CanGoForward;

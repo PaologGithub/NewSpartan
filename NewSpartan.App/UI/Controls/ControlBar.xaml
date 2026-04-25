@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="NewSpartan.App.ControlBar"
+    x:Class="NewSpartan.App.UI.Controls.ControlBar"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:NewSpartan.App"
@@ -36,8 +36,11 @@
                 VerticalContentAlignment="Center"
                 PlaceholderText="Enter a web address"
                 QueryIcon="Forward"
+                TextMemberPath=""
+                UpdateTextOnSelect="False"
                 QuerySubmitted="SearchBox_QuerySubmitted"
-                TextChanged="SearchBox_TextChanged">
+                TextChanged="SearchBox_TextChanged"
+                SuggestionChosen="SearchBox_SuggestionChosen">
                 <AutoSuggestBox.Resources>
                     <Thickness x:Key="TextControlThemePadding">12,11,0,11</Thickness>
                     <Thickness x:Key="TextControlBorderThemeThickness">0</Thickness>

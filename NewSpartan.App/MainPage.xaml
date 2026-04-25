@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:NewSpartan.App"
+    xmlns:controls="using:NewSpartan.App.UI.Controls"
     xmlns:renderer="using:NewSpartan.EdgeWebviewRenderer"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -11,13 +12,16 @@
 
     <Grid>
         <Grid.RowDefinitions>
+            <!-- Titlebar -->
+            <RowDefinition x:Name="TitlebarRow" Height="32" />
             <!-- ControlBar -->
-            <RowDefinition Height="40" />
+            <RowDefinition x:Name="ControlBarRow" Height="40" />
             <!-- WebRenderer -->
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <local:ControlBar Grid.Row="0" />
-        <renderer:WebRenderer Grid.Row="1" x:Name="WebRenderer" />
+        <controls:Titlebar x:Name="TitlebarControl" Grid.Row="0" />
+        <controls:ControlBar x:Name="ControlBarControl" Grid.Row="1" />
+        <renderer:WebRenderer x:Name="WebRendererControl" Grid.Row="2" />
     </Grid>
 </Page>
