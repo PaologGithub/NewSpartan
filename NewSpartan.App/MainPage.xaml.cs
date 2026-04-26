@@ -25,6 +25,7 @@ namespace NewSpartan.App
             InitializeComponent();
 
             CurrentWebviewRenderer = new EdgeWebviewRenderer.EdgeWebviewRendererImpl(WebRendererControl);
+            //CurrentWebviewRenderer = new NativeWebviewRenderer.NativeWebviewRendererImpl(WebRendererControl);
             Initialize();
         }
 
@@ -34,6 +35,7 @@ namespace NewSpartan.App
             {
                 CurrentWebviewRenderer.Initialize();
             };
+
             CurrentWebviewRenderer.GetWebPage().FullscreenChanged += (sender, fullscreen) =>
             {
                 ApplicationView view = ApplicationView.GetForCurrentView();
@@ -54,8 +56,39 @@ namespace NewSpartan.App
                 }
             };
 
-             await WebRendererControl.EdgeRenderer.EnsureCoreWebView2Async();
+            await WebRendererControl.EdgeRenderer.EnsureCoreWebView2Async();
         }
+
+        /*private void InitializeNativeRenderer()
+        {
+            WebRendererControl.Loaded += (s, e) =>
+            {
+                CurrentWebviewRenderer.Initialize();
+            };
+
+            CurrentWebviewRenderer.GetWebPage().FullscreenChanged += (sender, fullscreen) =>
+            {
+                ApplicationView view = ApplicationView.GetForCurrentView();
+                if (fullscreen)
+                {
+                    if (view.TryEnterFullScreenMode())
+                    {
+                        GoFullscreen();
+                    }
+                    else
+                    {
+                        ExitFullscreen();
+                    }
+                    ;
+                }
+                else
+                {
+                    view.ExitFullScreenMode();
+
+                    ExitFullscreen();
+                }
+            };
+        }*/
 
         private void GoFullscreen()
         {

@@ -4,7 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:NewSpartan.App"
     xmlns:controls="using:NewSpartan.App.UI.Controls"
-    xmlns:renderer="using:NewSpartan.EdgeWebviewRenderer"
+    xmlns:edgerenderer="using:NewSpartan.EdgeWebviewRenderer"
+    xmlns:nativerenderer="using:NewSpartan.NativeWebviewRenderer"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -22,6 +23,7 @@
 
         <controls:Titlebar x:Name="TitlebarControl" Grid.Row="0" />
         <controls:ControlBar x:Name="ControlBarControl" Grid.Row="1" />
-        <renderer:WebRenderer x:Name="WebRendererControl" Grid.Row="2" />
+        <edgerenderer:WebRenderer x:Name="WebRendererControl" Grid.Row="2" />
+        <!--<nativerenderer:WebRenderer x:Name="WebRendererControl" Grid.Row="2" />-->
     </Grid>
 </Page>

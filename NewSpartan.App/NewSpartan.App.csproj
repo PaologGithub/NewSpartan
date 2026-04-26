@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\NewSpartan.Core\NewSpartan.Core.csproj" />
     <ProjectReference Include="..\NewSpartan.EdgeWebviewRenderer\NewSpartan.EdgeWebviewRenderer.csproj" />
+    <ProjectReference Include="..\NewSpartan.NativeWebviewRenderer\NewSpartan.NativeWebviewRenderer.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UI\Controls\" />
